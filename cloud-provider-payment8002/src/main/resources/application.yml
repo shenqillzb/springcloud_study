@@ -1,0 +1,24 @@
+server:
+  port: 8002
+spring:
+  application:
+    name: cloud-payment-service
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource  # 当前数据源操作类型
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://49.234.84.27:3306/mysql_demo?useUnicode=true&characterEncoding=utf-8&useSSL=false
+    username: shenqi_mysql
+    password: Shenqi$666
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.shenqi.springcloud.entities # 所有 Entity 别名类所在包
+eureka:
+  client:
+    register-with-eureka: true # 表示是否将自己注册进 Eureka Server 默认为 True
+    fetch-registry: true # 是否从 Eureka Server 抓取已有注册信息，默认为 True 单节点无所谓，集群必须设置为 true 才能配合 ribbon 使用负载均衡
+    service-url:
+      defaultZone: http://localhost:7001/eureka,http://localhost:7002/eureka
+  instance:
+    instance-id: payment8002 # 配置主机名称
+    prefer-ip-address: true # 访问路径可以显示 IP 地址
+    # ip-address: 111.111.0.1 # 若 prefer-ip-address 为 true 可以根据 ip-address 设置的值显示 IP 地址

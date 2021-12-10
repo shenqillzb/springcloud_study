@@ -1,0 +1,10 @@
+server:
+  port: 7001
+eureka:
+  instance:
+    hostname: eureka7001.com # Eureka 服务端的实例名称
+  client:
+    register-with-eureka: false # False 表示不向注册中心注册自己
+    fetch-registry: false # False 表示自己就是注册中心，职责就是维护服务实例并不需要检索服务
+    service-url:
+      defaultZone: http://localhost:7002/eureka/ # 设置与 Eureka Server 交互的地址查询服务与注册服务需要依赖这个地址
